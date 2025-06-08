@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las 11 Áreas del Autorreconocimiento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .profile-section {
+            padding: 30px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .profile-info h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .profile-traits {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .trait-tag {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .trait-tag:hover {
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(116, 185, 255, 0.3);
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .area-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .area-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .area-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .area-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        
+        .area-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .area-title {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .area-description {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .personal-reflection {
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+        
+        .central-figure {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 15px;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .human-silhouette {
+            width: 200px;
+            height: 300px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+        }
+        
+        .animated-figure {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        
+        .halo {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .label {
+            animation: fadeInOut 5s ease-in-out infinite;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes fadeInOut {
+            0%, 20%, 80%, 100% { opacity: 0.6; }
+            40%, 60% { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .central-figure {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .areas-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .central-figure {
+                grid-column: 2;
+                grid-row: 2 / 4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>Las 11 Áreas del Autorreconocimiento</h1>
+                <p class="subtitle">Herramienta pedagógica para el desarrollo de marca personal</p>
+            </div>
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-grid">
+                <div class="profile-avatar">
+                    M
+                </div>
+                <div class="profile-info">
+                    <h2>Yeison Betancur: Hombre de Medellín</h2>
+                    <div class="profile-traits">
+                        <span class="trait-tag">🏔️ Paisa</span>
+                        <span class="trait-tag">💪 Disciplinado</span>
+                        <span class="trait-tag">❤️ Apasionado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <p>Estas áreas son una herramienta pedagógica que te ayudan a explorar diferentes dimensiones de tu persona. Al conocerlas, puedes trabajar en ellas para construir una <span class="highlight">marca personal más completa y equilibrada</span>.</p>
+            </div>
+            
+            <div class="areas-grid">
+                <div class="area-card">
+                    <div class="area-number">1</div>
+                    <h3 class="area-title">Aspecto Físico</h3>
+                    <p class="area-description">Cómo te ves físicamente y cómo eso influye en tu confianza y en la percepción de los demás.</p>
+                    <div class="personal-reflection">
+                        "Como hombre colombiano, valoro el cuidado personal y la presentación. Mi disciplina se refleja en mantener una buena condición física y vestirme apropiadamente para cada ocasión."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">2</div>
+                    <h3 class="area-title">Relación con los Demás</h3>
+                    <p class="area-description">Tu capacidad de interactuar, empatizar y mantener relaciones sanas con distintos grupos sociales.</p>
+                    <div class="personal-reflection">
+                        "La calidez latina me permite conectar fácilmente con otros. Soy directo pero respetuoso, y valoro las relaciones duraderas y sinceras."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">3</div>
+                    <h3 class="area-title">Personalidad</h3>
+                    <p class="area-description">Tus rasgos característicos, tanto positivos como negativos.</p>
+                    <div class="personal-reflection">
+                        "Soy apasionado en todo lo que hago, a veces hasta el punto de ser intenso. Mi disciplina me ayuda a mantener el rumbo, pero debo cuidar no ser demasiado exigente conmigo mismo."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">4</div>
+                    <h3 class="area-title">Cómo me Ven los Demás</h3>
+                    <p class="area-description">La percepción externa que tienen amigos, familiares y colegas sobre ti.</p>
+                    <div class="personal-reflection">
+                        "Me ven como alguien confiable y trabajador. Mi pasión por lo que hago es evidente, y mis resultados ayudan a respaldar la impresión."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">5</div>
+                    <h3 class="area-title">Rendimiento en el Estudio o Trabajo</h3>
+                    <p class="area-description">Tu nivel de compromiso, productividad y logros académicos o profesionales.</p>
+                    <div class="personal-reflection">
+                        "Mi disciplina se traduce en constancia y resultados. Establezco metas claras y trabajo sistemáticamente para alcanzarlas, siempre buscando la excelencia."
+                    </div>
+                </div>
+                
+                <div class="central-figure">
+                    <svg viewBox="0 0 200 300" class="human-silhouette">
+                        <defs>
+                            <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge> 
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Human silhouette -->
+                        <path d="M100 20 
+                                 C110 20 115 25 115 35
+                                 C115 45 110 50 100 50
+                                 C90 50 85 45 85 35
+                                 C85 25 90 20 100 20 Z
+                                 
+                                 M100 50
+                                 L95 60
+                                 L85 70
+                                 L80 100
+                                 L75 130
+                                 L70 160
+                                 L75 170
+                                 L80 180
+                                 L85 190
+                                 L90 200
+                                 L95 210
+                                 L100 220
+                                 L100 280
+                                 L95 285
+                                 L90 290
+                                 L85 295
+                                 L90 300
+                                 L110 300
+                                 L115 295
+                                 L110 290
+                                 L105 285
+                                 L100 280
+                                 L100 220
+                                 L105 210
+                                 L110 200
+                                 L115 190
+                                 L120 180
+                                 L125 170
+                                 L130 160
+                                 L125 130
+                                 L120 100
+                                 L115 70
+                                 L105 60
+                                 L100 50
+                                 
+                                 M75 170
+                                 L65 175
+                                 L55 180
+                                 L50 185
+                                 L45 190
+                                 L50 195
+                                 L55 200
+                                 L65 205
+                                 L75 210
+                                 
+                                 M125 170
+                                 L135 175
+                                 L145 180
+                                 L150 185
+                                 L155 190
+                                 L150 195
+                                 L145 200
+                                 L135 205
+                                 L125 210
+                                 
+                                 M100 220
+                                 L95 225
+                                 L85 235
+                                 L80 245
+                                 L75 255
+                                 L70 265
+                                 L65 275
+                                 L60 285
+                                 L65 290
+                                 L70 295
+                                 L75 300
+                                 L85 300
+                                 
+                                 M100 220
+                                 L105 225
+                                 L115 235
+                                 L120 245
+                                 L125 255
+                                 L130 265
+                                 L135 275
+                                 L140 285
+                                 L135 290
+                                 L130 295
+                                 L125 300
+                                 L115 300"
+                              fill="url(#bodyGradient)" 
+                              stroke="#2c3e50" 
+                              stroke-width="2" 
+                              filter="url(#glow)"
+                              class="animated-figure"/>
+                        
+                        <!-- Decorative elements -->
+                        <circle cx="100" cy="35" r="25" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" opacity="0.5" class="halo"/>
+                        
+                        <!-- Labels around the figure -->
+                        <text x="30" y="80" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Aspecto Físico</text>
+                        <text x="30" y="120" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Personalidad</text>
+                        <text x="130" y="80" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Relaciones</text>
+                        <text x="130" y="120" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Percepción</text>
+                        <text x="40" y="200" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Creatividad</text>
+                        <text x="120" y="200" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Aprendizaje</text>
+                        <text x="70" y="260" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Cultura</text>
+                        <text x="100" y="260" fill="#2c3e50" font-size="10" font-weight="bold" class="label">Identidad</text>
+                    </svg>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">6</div>
+                    <h3 class="area-title">Realización de Tareas Diarias</h3>
+                    <p class="area-description">Hábitos de higiene, organización, cuidado personal y familiar.</p>
+                    <div class="personal-reflection">
+                        "Mantengo rutinas estructuradas que reflejan mi disciplina. El orden en mi espacio personal es importante, así como cuidar de mi familia y responsabilidades del hogar."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">7</div>
+                    <h3 class="area-title">Razonamiento y Resolución de Problemas</h3>
+                    <p class="area-description">Capacidad crítica y analítica frente a situaciones complejas.</p>
+                    <div class="personal-reflection">
+                        "Combino la pasión con el análisis racional. Puedo ser intuitivo como buen colombiano, pero también metódico cuando la situación lo requiere."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">8</div>
+                    <h3 class="area-title">Capacidad de Aprendizaje y Entendimiento</h3>
+                    <p class="area-description">Habilidad para adquirir nuevos conocimientos y comprender información nueva.</p>
+                    <div class="personal-reflection">
+                        "Mi curiosidad natural y disciplina me permiten aprender continuamente. Busco entender no solo el 'qué' sino también el 'por qué' de las cosas."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">9</div>
+                    <h3 class="area-title">Capacidad de Creación e Innovación</h3>
+                    <p class="area-description">Tu potencial para generar ideas originales y resolver problemas de forma creativa.</p>
+                    <div class="personal-reflection">
+                        "Mi espiritu creativo lo manifiesto a través de la múscia y la escritura. Mi pasión alimenta mi creatividad, mientras que mi disciplina me ayuda a ejecutar las ideas."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">10</div>
+                    <h3 class="area-title">Entendimiento Cultural Propio</h3>
+                    <p class="area-description">Conciencia sobre tu cultura, valores, costumbres y cómo estos influyen en tu visión del mundo.</p>
+                    <div class="personal-reflection">
+                        "Soy orgulloso de mis raíces paisas: la calidez, el emprendimiento, la familia como valor central. Estos elementos definen cómo veo el mundo y cómo me relaciono con él."
+                    </div>
+                </div>
+                
+                <div class="area-card">
+                    <div class="area-number">11</div>
+                    <h3 class="area-title">Percepción Sexual</h3>
+                    <p class="area-description">Cómo te percibes y expresas en relación con tu identidad sexual y género.</p>
+                    <div class="personal-reflection">
+                        "Me identifico como hombre heterosexual. Valoro la masculinidad equilibrada: fuerte pero sensible, protector pero respetuoso, apasionado pero controlado. También considero importante el respeto hacia todas las orientaciones sexuales y de género, mientras haya amor, pasión y respeto mutuo, las relaciones las veo entre dos personas, sin importar su género, orientación sexual o cualquier otro tipo de etiqueta."
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>💡 <strong>Reflexión:</strong> El autorreconocimiento es un proceso continuo que nos permite crecer y desarrollar una marca personal auténtica y coherente con nuestros valores.</p>
+        </div>
+    </div>
+</body>
+</html>
